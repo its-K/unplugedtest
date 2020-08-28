@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Users - Unpluged</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+                    <div class="sidebar-brand-text mx-3"><span>Unpluged</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item" role="presentation">
+                        <div class="nav-item dropdown show"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true" href="#"><i class="fas fa-table"></i>Products</a>
+                            <div class="dropdown-menu show" role="menu"><a class="dropdown-item" role="presentation" href="products.html">All Products</a><a class="dropdown-item" role="presentation" href="addproduct.html">Add Products</a></div>
+                        </div>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <div class="nav-item dropdown show"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true" href="#"><i class="fas fa-table"></i>Transactions</a>
+                            <div class="dropdown-menu show" role="menu"><a class="dropdown-item" role="presentation" href="orders.html">Orders</a><a class="dropdown-item" role="presentation" href="transactions.html">User Transactions</a></div>
+                        </div>
+                    </li>
+                    <li class="nav-item" role="presentation"></li>
+                    <li class="nav-item" role="presentation"></li>
+                    <li class="nav-item" role="presentation">
+                        <div class="nav-item dropdown show"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true" href="#"><i class="fas fa-user"></i>Users</a>
+                            <div class="dropdown-menu show" role="menu"><a class="dropdown-item" role="presentation" href="addmoney.html">Add/Deduct money</a><a class="dropdown-item" role="presentation" href="users.html">Find/Create Users</a></div>
+                        </div>
+                    </li>
+                    <li class="nav-item" role="presentation"></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group">
+                                <div class="input-group-append"></div>
+                            </div>
+                        </form>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-search"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right p-3 animated--grow-in" role="menu" aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto navbar-search w-100">
+                                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                            <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            
+                            <div class="d-none d-sm-block topbar-divider"></div>
+                            <li class="nav-item dropdown no-arrow" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small"><div class="loginname"></div></span></a>
+                                    <div
+                                        class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
+                                        <a class="dropdown-item" role="presentation" href="#" onclick="logout()"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>
+                    </div>
+                    </li>
+                    </ul>
+            </div>
+            </nav>
+            <div class="alertbar"></div>
+            <div class="modal" id="myModal"></div>
+            <div class="modal fade" id="myModal" role="dialog">
+            </div> 
+            <div class="container-fluid">
+                <h3 class="text-dark mb-1">Find Users</h3>
+            </div>
+            <div class="row">
+                <div class="col-md-10 offset-md-1" style="height: 70px;">
+                    <div class="card m-auto" style="max-width:850px">
+                        <div class="card-body" style="padding: 0;">
+                            <div class="d-flex align-items-center"><i class="fas fa-search d-none d-sm-block h4 text-body m-0" style="padding: 5px;"></i><input class="form-control form-control-lg flex-shrink-1 form-control-borderless usersearch" type="search" placeholder="Search users" name="searchbar"style="padding: 0;" >
+                            <button class="btn btn-success btn-lg search" style="margin-top: 0;" onclick="usersearch()">Search</button></form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!-- Users details come here-->
+            <div class="container userdetails">
+                <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                            <table class="table my-0" id="dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>Username</th>
+                                        <th>Name</th>
+                                        <th>Wallet</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Group</th>
+                                        <th>Block</th>
+                                        <th>Password</th>
+                                        <th>Operations</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                            </table>
+                                    </div>
+            </div>
+
+
+            <div class="container-fluid" style="margin-top: 30px;">
+                <h1 style="font-size: 27px;color: rgb(70,70,82);">Create User</h1>
+                <div class="input-group" style="margin-top: 20px;">
+                    <div class="input-group-prepend"><span class="input-group-text fa fa-user"></span></div><input class="form-control form-control-borderless createuser" type="text" placeholder="Username" name="username" style="max-width: 80%;">
+                    <div class="input-group-append" style="max-width: 79px;"></div>
+                </div>
+                <div class="input-group" style="margin-top: 20px;">
+                    <div class="input-group-prepend"><span class="input-group-text fa fa-address-card"></span></div><input class="form-control form-control-borderless createuser" type="text" placeholder="Name" name="name" style="max-width: 80%;">
+                    <div class="input-group-append" style="max-width: 79px;"></div>
+                </div>
+                <div class="input-group" style="margin-top: 20px;">
+                    <div class="input-group-prepend"><span class="input-group-text fa fa-envelope"></span></div><input class="form-control form-control-borderless createuser" type="email" name="email" style="max-width: 80%;" placeholder="Email">
+                    <div class="input-group-append" style="max-width: 80%;"></div>
+                </div>
+                <div class="input-group" style="margin-top: 20px;">
+                    <div class="input-group-prepend"><span class="input-group-text fa fa-phone"></span></div><input class="form-control form-control-borderless createuser" type="text" name="phone" placeholder="Phone" style="max-width: 80%;">
+                    <div class="input-group-append" style="max-width: 79px;"></div>
+                </div>
+                <div class="input-group" style="margin-top: 20px;">
+                    <div class="input-group-prepend"><span class="input-group-text fa fa-users"></span></div><input class="form-control form-control-borderless createuser" type="text" name="department" placeholder="Department" style="max-width: 80%;">
+                    <div class="input-group-append" style="max-width: 79px;"></div>
+                </div>
+                <div class="input-group" style="margin-top: 20px;">
+                    <div class="input-group-prepend"><span class="input-group-text fa fa-lock"></span></div><input class="form-control form-control-borderless createuser" type="text" name="password" placeholder="Password" style="max-width: 80%;">
+                    <div class="input-group-append" style="max-width: 79px;"></div>
+                </div>
+                <button class="btn btn-success" style="margin-top: 20px" type="button" onclick="createuser()">Create</button></div>
+            <div class="btn-toolbar"></div>
+        </div>
+    </div>
+        <footer class="bg-white sticky-footer">
+            <div class="container my-auto">
+                <div class="text-center my-auto copyright"><span>Copyright © Unpluged 2020</span></div>
+                <div class="text-center">Created by <span class="fa fa-rocket"></span> <a href="https://kishore.cc">Kishore</a></div>
+            </div>
+        </footer>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="assets/js/script.min.js"></script>
+</body>
+
+</html>

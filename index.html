@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Dashboard - Unpluged</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</head>
+
+<body id="page-top" onload="loaddashboard()">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+                    <div class="sidebar-brand-text mx-3"><span>Unpluged</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="index.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item" role="presentation">
+                        <div class="nav-item dropdown show"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true" href="#"><i class="fas fa-table"></i>Products</a>
+                            <div class="dropdown-menu show" role="menu"><a class="dropdown-item" role="presentation" href="products.html">All Products</a><a class="dropdown-item" role="presentation" href="addproduct.html">Add Products</a></div>
+                        </div>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <div class="nav-item dropdown show"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true" href="#"><i class="fas fa-table"></i>Transactions</a>
+                            <div class="dropdown-menu show" role="menu"><a class="dropdown-item" role="presentation" href="orders.html">Orders</a><a class="dropdown-item" role="presentation" href="transactions.html">User Transactions</a></div>
+                        </div>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <div class="nav-item dropdown show"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true" href="#"><i class="fas fa-user"></i>Users</a>
+                            <div class="dropdown-menu show" role="menu"><a class="dropdown-item" role="presentation" href="addmoney.html">Add/Deduct money</a><a class="dropdown-item" role="presentation" href="users.html">Find/Create Users</a></div>
+                        </div>
+                    </li>
+                    <li class="nav-item" role="presentation"></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group">
+                                <div class="input-group-append"></div>
+                            </div>
+                        </form>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            
+                            
+                            <div class="d-none d-sm-block topbar-divider"></div>
+                            <li class="nav-item dropdown no-arrow" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small"><div class="loginname"></div></span></a>
+                                    <div
+                                        class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
+                                            <a class="dropdown-item" role="presentation" href="#" onclick="logout()"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>
+                    </div>
+                    </li>
+                    </ul>
+            </div>
+            </nav>
+            <div class="container-fluid">
+                <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                    <div><h3 class="text-dark" style="display: inline-block;">Dashboard <span class="fa fa-refresh" onclick="loaddashboard()"></span></h3></div><input data-name="dashboard" class="datepicker text-md-right" type="date" name="birthday"></div>
+                <div class="row">
+                    <div class="col-md-6 col-xl-3 mb-4">
+                        <div class="card shadow border-left-primary py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col mr-2">
+                                        <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span><a href="orders.html">orders (ToDay)</a></span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0 orders"><span></span></div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-3 mb-4">
+                        <div class="card shadow border-left-success py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col mr-2">
+                                        <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>revenue (Today)</span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0 revenue"></div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-3 mb-4">
+                        <div class="card shadow border-left-info py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col mr-2">
+                                        <div class="text-uppercase text-info font-weight-bold text-xs mb-1"><span>revenue (Weekly)</span></div>
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <div class="text-dark font-weight-bold h5 mb-0 mr-3 weekly"><span></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-3 mb-4">
+                        <div class="card shadow border-left-warning py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col mr-2">
+                                        <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span>amount added (today)</span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0 addedtoday"><span></span></div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-7 col-xl-8">
+                        <div class="card shadow mb-4">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h6 class="text-primary font-weight-bold m-0">Revenue Overview (Weekly)</h6>
+                                <!-- <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" style="background-color: rgb(248,249,252);"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                    <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in"
+                                        role="menu">
+                                        <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" role="presentation" href="#">&nbsp;Action</a><a class="dropdown-item" role="presentation" href="#">&nbsp;Another action</a>
+                                        <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#">&nbsp;Something else here</a></div>
+                                </div> -->
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-area"><canvas id="myChart3"  height="90"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-xl-4">
+                        <div class="card shadow mb-4">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h6 class="text-primary font-weight-bold m-0">Orders</h6>
+                                <!-- <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" style="background-color: rgb(248,249,252);"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                    <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in"
+                                        role="menu">
+                                        <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" role="presentation" href="#">&nbsp;Action</a><a class="dropdown-item" role="presentation" href="#">&nbsp;Another action</a>
+                                        <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#">&nbsp;Something else here</a></div>
+                                </div> -->
+                            </div>
+                            <div class="card-body orderchart">
+                                <!-- <div class="chart-area"><canvas id="myChart"  height="170"></div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-xl-8">
+                    <div class="card shadow mb-4">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h6 class="text-primary font-weight-bold m-0">Revenue Overview (Monthly)</h6>
+                            <!-- <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" style="background-color: rgb(248,249,252);"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in"
+                                    role="menu">
+                                    <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" role="presentation" href="#">&nbsp;Action</a><a class="dropdown-item" role="presentation" href="#">&nbsp;Another action</a>
+                                    <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#">&nbsp;Something else here</a></div>
+                            </div> -->
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-area"><canvas id="myChart4"  height="90"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-xl-4">
+                        <div class="card shadow mb-4">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h6 class="text-primary font-weight-bold m-0">Orders Category</h6>
+                                <!-- <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" style="background-color: rgb(248,249,252);"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                    <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in"
+                                        role="menu">
+                                        <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" role="presentation" href="#">&nbsp;Action</a><a class="dropdown-item" role="presentation" href="#">&nbsp;Another action</a>
+                                        <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#">&nbsp;Something else here</a></div>
+                                </div> -->
+                            </div>
+                            <div class="card-body ordercategchart">
+                                <!-- <div class="chart-area"><canvas id="myChart2"  height="200"></div> -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <footer class="bg-white sticky-footer">
+        <div class="container my-auto">
+            <div class="text-center my-auto copyright"><span>Copyright © Unpluged 2020</span></div>
+            <div class="text-center">Created by <span class="fa fa-rocket"></span> <a href="https://kishore.cc">Kishore</a></div>
+        </div>
+    </footer>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="assets/js/script.min.js"></script>
+    <script type="text/javascript">
+        
+//         var ctx = document.getElementById('myChart2').getContext('2d');
+// var myChart = new Chart(ctx, {
+//     type: 'doughnut',
+//     data: {
+//         position: 'left',
+//         labels: ['#ff6666', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+//         datasets: [{
+//             data: [12, 19, 23, 5, 2, 3],
+//              backgroundColor: ['#ff6666','#79ff4d','#1a8cff','#ffff4d','#4dffff','#bf80ff'],
+//             pointBackgroundColor: 'rgba(255,88,130,1)',
+//             borderColor: [
+//                 '#ff6666',
+//                 '#79ff4d',
+//                 '#1a8cff',
+//                 '#ffff4d',
+//                 '#4dffff',
+//                 '#bf80ff'
+//             ],
+//             borderWidth: 1
+//         }]
+//     },
+//     options: {
+//     }
+// });
+
+    </script>
+</body>
+
+</html>
